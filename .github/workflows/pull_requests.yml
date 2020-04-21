@@ -1,0 +1,33 @@
+on: 
+  pull_request:
+    branches:
+      - master
+name: Terraform
+jobs:
+  filter-to-pr-open-synced:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: terraform-fmt
+      uses: hashicorp/terraform-github-actions/fmt@v0.4.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        TF_ACTION_WORKING_DIR: .
+    - name: terraform-init
+      uses: hashicorp/terraform-github-actions/init@v0.4.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+        TF_ACTION_WORKING_DIR: .
+    - name: terraform-validate
+      uses: hashicorp/terraform-github-actions/validate@v0.4.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        TF_ACTION_WORKING_DIR: .
+    - name: terraform-plan
+      uses: hashicorp/terraform-github-actions/plan@v0.4.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+        TF_ACTION_WORKING_DIR: .
+
