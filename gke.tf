@@ -22,3 +22,44 @@ module gke_web_stg_container_cluster {
   master_ipv4_cidr_block     = "172.16.0.16/28"
 }
 
+module gke_web_stg_web {
+  source          = "git::https://github.com/intetunder-temp/terraform-modules.git//node_pool"
+  cluster_name    = "gke"
+  name            = "default"
+  autoscaling     = false
+  node_count      = "3"
+  min_node_count  = "0"
+  max_node_count  = "0"
+  max_pods        = "110"
+  local_ssd_count = "0"
+  region          = "europe-west4"
+  auto_repair     = "true"
+  auto_upgrade    = "true"
+  image_type      = "COS"
+  disk_size_gb    = "30"
+  disk_type       = "pd-ssd"
+  machine_type    = "n1-standard-2"
+  n2_instance     = false
+  preemptible     = "false"
+  node_metadata   = "SECURE"
+  gke_project     = module.gke_project.project_id
+
+  node_pools_labels = {
+    all = {}
+    default = {
+      workload = "default"
+      suffix   = "01"
+    }
+  }
+  node_pools_taints = {
+    all = []
+    default = [
+      {
+        key    = "workload"
+        value  = "default"
+        effect = "NO_SCHEDULE"
+      }
+    ]
+  }
+}
+
