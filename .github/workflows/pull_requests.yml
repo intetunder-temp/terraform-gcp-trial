@@ -17,7 +17,6 @@ jobs:
         tf_actions_comment: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        TF_ACTION_WORKING_DIR: .
     - name: terraform-init
       uses: hashicorp/terraform-github-actions@master
       with:
@@ -28,7 +27,6 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-        TF_ACTION_WORKING_DIR: .
     - name: terraform-validate
       uses: hashicorp/terraform-github-actions@master
       with:
@@ -38,7 +36,6 @@ jobs:
         tf_actions_comment: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        TF_ACTION_WORKING_DIR: .
     - name: terraform-plan
       uses: hashicorp/terraform-github-actions@master
       with:
@@ -46,9 +43,6 @@ jobs:
         tf_actions_subcommand: 'plan'
         tf_actions_working_dir: '.'
         tf_actions_comment: true
-
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-        TF_ACTION_WORKING_DIR: .
-
