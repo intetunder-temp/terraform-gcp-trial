@@ -32,7 +32,7 @@ module gke_web_stg_web {
   max_node_count  = "0"
   max_pods        = "110"
   local_ssd_count = "0"
-  region          = "europe-west4"
+  region          = "europe-west4-a"
   auto_repair     = "true"
   auto_upgrade    = "true"
   image_type      = "COS"
