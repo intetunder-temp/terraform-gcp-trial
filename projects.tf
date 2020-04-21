@@ -10,6 +10,6 @@ module gke_project {
   labels = {
     team        = "sander"
     environment = "production"
-    purpose     = "GKE"
+    purpose     = "gke"
   }
 }
