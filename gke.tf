@@ -27,7 +27,7 @@ module gke_web_stg_web {
   cluster_name    = "gke"
   name            = "default"
   autoscaling     = false
-  node_count      = "3"
+  node_count      = "1"
   min_node_count  = "0"
   max_node_count  = "0"
   max_pods        = "110"
