@@ -32,4 +32,10 @@ module subnetwork_gke {
     ]
   }
 }
+module "cloudnat-gke-netherlands" {
+  source  = "git::https://github.com/intetunder-temp/terraform-modules.git//cloudnat"
+  region  = "europe-west4"
+  project = module.network_gke.network_project
+  network = module.network_gke.network_name
+}
 
