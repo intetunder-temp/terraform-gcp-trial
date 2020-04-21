@@ -1,0 +1,10 @@
+steps:
+
+- name: 'hashicorp/terraform:0.12.21' 
+  args: ['init', '-reconfigure', '-input=false']
+
+- name: 'hashicorp/terraform:0.12.21' 
+  args: ['apply', '-input=false', '-auto-approve']
+
+timeout: 600s
+tags: [ 'terraform' ]
