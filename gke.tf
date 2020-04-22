@@ -78,7 +78,7 @@ module gke_dev_system {
   image_type      = "COS"
   disk_size_gb    = "30"
   disk_type       = "pd-ssd"
-  machine_type    = "custom-1-13312-ext"
+  machine_type    = "custom-2-13312"
   n2_instance     = false
   preemptible     = "false"
   node_metadata   = "SECURE"
